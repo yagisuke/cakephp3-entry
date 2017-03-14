@@ -13,17 +13,16 @@ class FormLearningController extends AppController {
   public function index() {
   }
 
-  public function sendForm() {
+  public function sendGetForm() {
 
-    $str = $this->request->query["text1"];
-    $result = "";
-    if ($str != "") {
-      $result = "you type: " . $str;
-    } else {
-      $result = "empty";
+    $resule = "※送信された情報<br>";
+    foreach ($this->request->query as $key => $val) {
+      if ($val == "") continue;
+
+      $result .= $key . " => " . h($val) . "<br />";
     }
 
     $this->set("result", $result);
   }
-// htmlspecialchars()
+
 }
