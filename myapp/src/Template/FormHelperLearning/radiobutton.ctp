@@ -1,4 +1,4 @@
-<h1>Form Helper checkbox Learning!</h1>
+<h1>Form Helper radio Learning!</h1>
 <p><?= $result ?></p>
 <?= $this->Form->create(null, ["type"=>"post", "url"=>["controller"=>"FormHelperLearning", "action"=>"radiobutton"]]) ?>
 <?= $this->Form->input("FormHelperLearningForm.radio1", array("type"=>"radio",
