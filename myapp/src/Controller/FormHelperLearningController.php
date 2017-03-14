@@ -22,6 +22,10 @@ class FormHelperLearningController extends AppController {
     $this->show();
   }
 
+  public function selectbox() {
+    $this->show();
+  }
+
   private function show() {
 
     $result = "";
