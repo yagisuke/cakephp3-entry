@@ -18,6 +18,10 @@ class FormHelperLearningController extends AppController {
     $this->show();
   }
 
+  public function radiobutton() {
+    $this->show();
+  }
+
   private function show() {
 
     $result = "";
