@@ -11,9 +11,16 @@ class FormHelperLearningController extends AppController {
   }
 
   public function index() {
+    $this->show();
+  }
+
+  public function checkbox() {
+    $this->show();
+  }
+
+  private function show() {
 
     $result = "";
-
     if ($this->request->isPost()) {
       $result = "<pre>※送信された情報<br />";
       foreach ($this->request->data['FormHelperLearningForm'] as $key => $val) {
@@ -21,7 +28,7 @@ class FormHelperLearningController extends AppController {
       }
       $result .= "</pre>";
     } else {
-      $result = "※なにか書いて送信してください。";
+      $result = "※なにか送信してください。";
     }
 
     $this->set("result", $result);
