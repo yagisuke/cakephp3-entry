@@ -13,6 +13,7 @@ class FormLearningController extends AppController {
   public function index() {
   }
 
+  /* GETの送信結果を表示 */
   public function sendGetForm() {
 
     $resule = "※送信された情報<br>";
@@ -25,6 +26,7 @@ class FormLearningController extends AppController {
     $this->set("result", $result);
   }
 
+  /* POSTの送信結果を表示 */
   public function sendPostForm() {
 
     $resule = "※送信された情報<br>";
