@@ -25,4 +25,16 @@ class FormLearningController extends AppController {
     $this->set("result", $result);
   }
 
+  public function sendPostForm() {
+
+    $resule = "※送信された情報<br>";
+    foreach ($this->request->data as $key => $val) {
+      if ($val == "") continue;
+
+      $result .= $key . " => " . h($val) . "<br />";
+    }
+
+    $this->set("result", $result);
+  }
+
 }
