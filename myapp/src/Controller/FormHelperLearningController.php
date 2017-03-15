@@ -11,30 +11,41 @@ class FormHelperLearningController extends AppController {
   }
 
   public function index() {
-    $this->show();
+    $this->setInputResult();
   }
 
   public function checkbox() {
-    $this->show();
+    $this->setInputResult();
   }
 
   public function radiobutton() {
-    $this->show();
+    $this->setInputResult();
   }
 
   public function selectbox() {
-    $this->show();
+    $this->setInputResult();
   }
 
-  private function show() {
+  public function datetime() {
+    $this->setInputResult($isDatetime = true);
+  }
+
+  private function setInputResult($isDatetime = false) {
 
     $result = "";
     if ($this->request->isPost()) {
-      $result = "<pre>※送信された情報<br />";
-      foreach ($this->request->data['FormHelperLearningForm'] as $key => $val) {
-        $result .= $key . ' => ' . $val;
+      $result = "※送信された情報<br />";
+
+      if ($isDatetime) {
+        $selectItems = $this->request->data["FormHelperLearningForm"]["datetime1"];
+      } else {
+        $selectItems = $this->request->data["FormHelperLearningForm"];
       }
-      $result .= "</pre>";
+
+      foreach ($selectItems as $key => $val) {
+        $result .= $key . " => " . $val . "<br />";
+      }
+
     } else {
       $result = "※なにか送信してください。";
     }
