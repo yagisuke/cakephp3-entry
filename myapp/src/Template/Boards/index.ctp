@@ -1,4 +1,13 @@
 <h1>DB Learning!</h1>
+<?= $this->Form->create($entity, ["url"=>["action"=>"addRecord"]]) ?>
+<fieldset>
+  name   : <?= $this->Form->text("name") ?>
+  title  : <?= $this->Form->text("title") ?>
+  content: <?= $this->Form->textarea("content") ?>
+</fieldset>
+<?= $this->Form->button("送信") ?>
+<?= $this->Form->end(); ?>
+<hr>
 <table>
   <thead>
     <tr>
@@ -21,3 +30,4 @@
     ?>
   </tbody>
 </table>
+<br><br><br><br>
