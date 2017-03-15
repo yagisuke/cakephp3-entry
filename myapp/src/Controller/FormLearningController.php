@@ -15,22 +15,18 @@ class FormLearningController extends AppController {
 
   /* GETの送信結果を表示 */
   public function sendGetForm() {
-
-    $resule = "※送信された情報<br>";
-    foreach ($this->request->query as $key => $val) {
-      if ($val == "") continue;
-
-      $result .= $key . " => " . h($val) . "<br />";
-    }
-
-    $this->set("result", $result);
+    $this->setInputResult($this->request->query);
   }
 
   /* POSTの送信結果を表示 */
   public function sendPostForm() {
+    $this->setInputResult($this->request->data);
+  }
 
-    $resule = "※送信された情報<br>";
-    foreach ($this->request->data as $key => $val) {
+  private function setInputResult($datas) {
+
+    $resule = "※送信された情報<br />";
+    foreach ($datas as $key => $val) {
       if ($val == "") continue;
 
       $result .= $key . " => " . h($val) . "<br />";
