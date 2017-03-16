@@ -2,6 +2,7 @@
 <ul>
   <li><a href="/boards/register/">レコード登録画面へ</a></li>
   <li><a href="/boards/search/">レコード検索画面へ</a></li>
+  <li><a href="/boards/delete/">レコード削除画面へ</a></li>
 </ul>
 <table>
   <thead>

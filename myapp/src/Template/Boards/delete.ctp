@@ -1,13 +1,20 @@
-<h1>DB Redister Learning!</h1>
+<h1>DB Delete Learning!</h1>
 <div><a href="/boards/">boardsTOPへ戻る&gt;</a></div>
-<?= $this->Form->create($entity, ["type"=>"post", "url"=>["action"=>"register"]]) ?>
+
+<h2>削除申請</h2>
+<?= $this->Form->create("", ["type"=>"post", "url"=>["action"=>"delete"]]) ?>
   <fieldset>
-    name   : <?= $this->Form->text("name") ?>
-    title  : <?= $this->Form->text("title") ?>
-    content: <?= $this->Form->textarea("content") ?>
+    id   : <?= $this->Form->text("id") ?>
   </fieldset>
   <?= $this->Form->button("送信") ?>
 <?= $this->Form->end(); ?>
+
+<?php if (!empty($deleteId)): ?>
+  <h2>削除項目</h2>
+  <p>ID&nbsp;<?= $deleteId ?>&nbsp;を削除しました。</p>
+<?php endif; ?>
+
+<h2>一覧</h2>
 <table>
   <thead>
     <tr>
@@ -19,10 +26,9 @@
   </thead>
   <tbody>
     <?php
-      $arr = $data->toArray();
-      for ($i = 0; $i < count($arr); $i++) {
+      for ($i = 0; $i < count($data); $i++) {
           echo $this->Html->tableCells(
-            $arr[$i]->toArray(),
+            $data[$i]->toArray(),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
             true);
@@ -30,3 +36,6 @@
     ?>
   </tbody>
 </table>
+<br />
+<br />
+<br />

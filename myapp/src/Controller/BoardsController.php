@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller;
 
+use \Exception;
+use Cake\Log\Log;
+
 class BoardsController extends AppController {
 
   /* 全レコード表示画面 */
@@ -42,6 +45,24 @@ class BoardsController extends AppController {
     $this->set("min", $data->min("id"));
     $this->set("max", $data->max("id"));
     $this->set("first", $data->first()->toArray());
+  }
+
+  /* レコード削除画面 */
+  public function delete() {
+
+    if ($this->request->is("post") && !empty($this->request->data)) {
+      try {
+        $deleteId = $this->request->data["id"];
+        $entity = $this->Boards->get($deleteId);
+        $this->Boards->delete($entity);
+
+        $this->set("deleteId", $deleteId);
+      } catch(Exception $e) {
+        Log::write("debug", $e->getMessage());
+      }
+    }
+    $this->set("data", $this->Boards->find("all")->toArray());
+
   }
 
 }
