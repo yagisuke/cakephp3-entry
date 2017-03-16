@@ -1,8 +1,13 @@
-<h1>DB Learning!</h1>
-<ul>
-  <li><a href="/boards/register/">レコード登録画面へ</a></li>
-  <li><a href="/boards/search/">レコード検索画面へ</a></li>
-</ul>
+<h1>DB Redister Learning!</h1>
+<div><a href="/boards/">boardsへ戻る&gt;</a></div>
+<?= $this->Form->create($entity, ["type"=>"post", "url"=>["action"=>"register"]]) ?>
+  <fieldset>
+    name   : <?= $this->Form->text("name") ?>
+    title  : <?= $this->Form->text("title") ?>
+    content: <?= $this->Form->textarea("content") ?>
+  </fieldset>
+  <?= $this->Form->button("送信") ?>
+<?= $this->Form->end(); ?>
 <table>
   <thead>
     <tr>
@@ -25,6 +30,3 @@
     ?>
   </tbody>
 </table>
-<br />
-<br />
-<br />
