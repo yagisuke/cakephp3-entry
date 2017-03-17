@@ -27,8 +27,16 @@
   <tbody>
     <?php
       for ($i = 0; $i < count($data); $i++) {
+
           echo $this->Html->tableCells(
-            $data[$i]->toArray(),
+            array(
+              $this->Html->link(
+                $data[$i]['id'],
+                "/boards/update/" . $data[$i]['id']
+              ),
+              $data[$i]['name'],
+              $data[$i]['title'],
+              $data[$i]['content']),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
             true);

@@ -65,4 +65,25 @@ class BoardsController extends AppController {
 
   }
 
+  /* レコード更新画面 */
+  public function update($id = 0) {
+
+    if ($this->request->is("put")) {
+
+      try {
+        $entity = $this->Boards->get($id);
+        $this->Boards->patchEntity($entity, $this->request->data);
+        $this->Boards->save($entity);
+
+      } catch(Exception $e) {
+        Logg::write("debug", $e->getMessage());
+      }
+
+    }
+
+    $this->set("entity", $this->Boards->get($id == 0 ? 1 : $id));
+    $this->set("data", $this->Boards->find("all")->toArray());
+
+  }
+
 }

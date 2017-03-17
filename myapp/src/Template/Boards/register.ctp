@@ -22,7 +22,14 @@
       $arr = $data->toArray();
       for ($i = 0; $i < count($arr); $i++) {
           echo $this->Html->tableCells(
-            $arr[$i]->toArray(),
+            array(
+              $this->Html->link(
+                $arr[$i]['id'],
+                "/boards/update/" . $arr[$i]['id']
+              ),
+              $arr[$i]['name'],
+              $arr[$i]['title'],
+              $arr[$i]['content']),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
             true);
