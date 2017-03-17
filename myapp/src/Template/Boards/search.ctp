@@ -36,7 +36,7 @@
                 $data[$i]['id'],
                 "/boards/update/" . $data[$i]['id']
               ),
-              $data[$i]['namev],
+              $data[$i]['name'],
               $data[$i]['title'],
               $data[$i]['content']),
             ['style'=>'background-color: #f0f0f0'],
