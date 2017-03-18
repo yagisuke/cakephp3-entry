@@ -9,24 +9,20 @@
     <tr>
       <th>ID</th>
       <th>NAME</th>
-      <th>TITLE</th>
-      <th>CONTENT</th>
     </tr>
   </thead>
   <tbody>
     <?php
-      $arr = $data->toArray();
-      for ($i = 0; $i < count($arr); $i++) {
+      print_r($data);
+      foreach ($data as $key => $name) {
 
           echo $this->Html->tableCells(
             array(
               $this->Html->link(
-                $arr[$i]['id'],
-                "/boards/update/" . $arr[$i]['id']
+                $key,
+                "/boards/update/" . $key
               ),
-              $arr[$i]['name'],
-              $arr[$i]['title'],
-              $arr[$i]['content']),
+              $name),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
             true);

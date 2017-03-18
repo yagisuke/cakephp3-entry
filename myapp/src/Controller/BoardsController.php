@@ -8,7 +8,7 @@ class BoardsController extends AppController {
 
   /* 全レコード表示画面 */
   public function index() {
-      $this->set("data", $this->Boards->find("all"));
+      $this->set("data", $this->Boards->find("list")->toArray());
   }
 
   /* レコード登録画面 */
