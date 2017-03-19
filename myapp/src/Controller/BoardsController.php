@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use \Exception;
 use Cake\Log\Log;
+use Cake\Datasource\ConnectionManager;
 
 class BoardsController extends AppController {
 
@@ -46,6 +47,22 @@ class BoardsController extends AppController {
     $this->set("min", $data->min("id"));
     $this->set("max", $data->max("id"));
     $this->set("first", $data->first());
+  }
+
+  /* レコード検索画面(connection managerにて検索) */
+  public function idsearch() {
+    $connection = ConnectionManager::get("default");
+
+    if ($this->request->is("get") && !empty($this->request->query["id"])) {
+      $data = $connection
+        ->execute("SELECT * FROM boards where id = :id", ["id" => $this->request->query["id"]])
+        ->fetchAll("assoc");
+    } else {
+      $data = $connection->execute("SELECT * FROM boards")->fetchAll("assoc");
+    }
+
+    $this->set("data", $data);
+    $this->set("entity", $this->Boards->newEntity());
   }
 
   /* レコード削除画面 */
