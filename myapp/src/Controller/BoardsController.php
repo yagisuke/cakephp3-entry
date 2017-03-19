@@ -28,7 +28,7 @@ class BoardsController extends AppController {
 
     $conditions = [];
 
-    if ($this->request->is("get") && !empty($this->request->query)) {
+    if ($this->request->is("get")) {
       if (!empty($this->request->query["id"])) {
         $conditions[] = ["id" => $this->request->query["id"]];
       }
@@ -45,7 +45,7 @@ class BoardsController extends AppController {
     $this->set("data", $data->toArray());
     $this->set("min", $data->min("id"));
     $this->set("max", $data->max("id"));
-    $this->set("first", $data->first()->toArray());
+    $this->set("first", $data->first());
   }
 
   /* レコード削除画面 */

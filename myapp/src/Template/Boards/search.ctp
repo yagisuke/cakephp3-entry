@@ -12,7 +12,7 @@
 
 <h2>検索結果</h2>
 <p>COUNT: <?= count($data) ?></p>
-<p>FIRST: <?php print_r($first) ?></p>
+<p>FIRST: <?php if (!empty($first)) print_r($first->toArray()); ?></p>
 <p>MIN  : <?= $min ?></p>
 <p>MAX  : <?= $max ?></p>
 
