@@ -11,7 +11,7 @@
 <?= $this->Form->end(); ?>
 
 <h2>検索結果</h2>
-<p>COUNT: <?= $count ?></p>
+<p>COUNT: <?= count($data) ?></p>
 <p>FIRST: <?php print_r($first) ?></p>
 <p>MIN  : <?= $min ?></p>
 <p>MAX  : <?= $max ?></p>
@@ -23,7 +23,6 @@
       <th>ID</th>
       <th>NAME</th>
       <th>TITLE</th>
-      <th>CONTENT</th>
     </tr>
   </thead>
   <tbody>
@@ -37,8 +36,7 @@
                 "/boards/update/" . $data[$i]['id']
               ),
               $data[$i]['name'],
-              $data[$i]['title'],
-              $data[$i]['content']),
+              $data[$i]['title']),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
             true);
