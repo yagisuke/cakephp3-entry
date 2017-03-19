@@ -2,7 +2,7 @@
 <div><a href="/boards/">boardsへ戻る&gt;</a></div>
 
 <h2>検索フォーム</h2>
-<?= $this->Form->create("", ["type"=>"get", "url"=>["action"=>"idsearch"]]) ?>
+<?= $this->Form->create("", ["type"=>"get", "url"=>["action"=>"searchv2"]]) ?>
   <fieldset>
     id   : <?= $this->Form->text("id") ?>
   </fieldset>

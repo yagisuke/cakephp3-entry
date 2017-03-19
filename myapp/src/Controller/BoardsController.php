@@ -50,7 +50,7 @@ class BoardsController extends AppController {
   }
 
   /* レコード検索画面(connection managerにて検索) */
-  public function idsearch() {
+  public function searchv2() {
     $connection = ConnectionManager::get("default");
 
     if ($this->request->is("get") && !empty($this->request->query["id"])) {
