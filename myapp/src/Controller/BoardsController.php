@@ -4,6 +4,7 @@ namespace App\Controller;
 use \Exception;
 use Cake\Log\Log;
 use Cake\Datasource\ConnectionManager;
+use Cake\Validation\Validator;
 
 class BoardsController extends AppController {
 
@@ -22,6 +23,26 @@ class BoardsController extends AppController {
 
     $this->set("data", $this->Boards->find("all"));
     $this->set("entity", $this->Boards->newEntity());
+  }
+
+  /* レコード登録画面(validation対応) */
+  public function registerv2() {
+
+    $entity = $this->Boards->newEntity();
+    if ($this->request->is("post")) {
+      $validator = new Validator();
+      $validator->notEmpty("name");
+      $validator->notEmpty("title");
+
+      if (!empty($validator->errors($this->request->data))) {
+        $this->Flash->error("please check entered values...");
+      } else {
+        $entity = $this->Boards->patchEntity($entity, $this->request->data);
+        $this->Boards->save($entity);
+        return $this->redirect(["action"=>"index"]);
+      }
+    }
+    $this->set('entity', $entity);
   }
 
   /* レコード検索画面 */
