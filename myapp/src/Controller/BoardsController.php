@@ -26,8 +26,6 @@ class BoardsController extends AppController {
   /* レコード検索画面 */
   public function search() {
 
-    $table = $this->Boards;
-    $selectItem = ["id", "name", "title"];
     $conditions = [];
 
     if ($this->request->is("get") && !empty($this->request->query)) {
@@ -39,9 +37,9 @@ class BoardsController extends AppController {
       }
     }
 
-    $data = $table->find()
+    $data = $this->Boards->find()
       ->where($conditions)
-      ->select($selectItem)
+      ->select(["id", "name", "title"])
       ->order(["name"=>"ASC", "id"=>"DESC"]);
 
     $this->set("data", $data->toArray());
