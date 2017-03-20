@@ -2,6 +2,7 @@
 <div><a href="/boards/">boardsへ戻る&gt;</a></div>
 
 <h2>更新フォーム</h2>
+<?= $this->Flash->render() ?>
 <?=$this->Form->create($entity) ?>
   <fieldset>
     <?php
