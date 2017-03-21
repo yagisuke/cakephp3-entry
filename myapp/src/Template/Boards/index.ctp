@@ -1,9 +1,10 @@
 <h1>DB Learning!</h1>
 <ul>
-  <li><a href="/boards/register/">レコード登録画面へ</a></li>
-  <li><a href="/boards/search/">レコード検索画面へ</a></li>
-  <li><a href="/boards/delete/">レコード削除画面へ</a></li>
+  <li><a href="/boards/register/"><?= __('register') ?></a></li>
+  <li><a href="/boards/search/"><?= __('search') ?></a></li>
+  <li><a href="/boards/delete/"><?= __('delete') ?></a></li>
 </ul>
+<p><?= __('{0} post', count($data)) ?></p>
 <table>
   <thead>
     <tr>
@@ -13,19 +14,17 @@
   </thead>
   <tbody>
     <?php
-      print_r($data);
       foreach ($data as $key => $name) {
-
-          echo $this->Html->tableCells(
-            array(
-              $this->Html->link(
-                $key,
-                "/boards/update/" . $key
-              ),
-              $name),
-            ['style'=>'background-color: #f0f0f0'],
-            ['style'=>'font-weight: bold'],
-            true);
+        echo $this->Html->tableCells(
+          array(
+            $this->Html->link(
+              $key,
+              "/boards/update/" . $key
+            ),
+            $name),
+          ['style'=>'background-color: #f0f0f0'],
+          ['style'=>'font-weight: bold'],
+          true);
       }
     ?>
   </tbody>

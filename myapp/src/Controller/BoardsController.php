@@ -5,12 +5,23 @@ use \Exception;
 use Cake\Log\Log;
 use Cake\Datasource\ConnectionManager;
 use Cake\Validation\Validator;
+use Cake\I18n\I18n;
 
 class BoardsController extends AppController {
 
+  public function initialize() {
+    I18n::locale('ja_JP');
+  }
+
   /* 全レコード表示画面 */
   public function index() {
-      $this->set("data", $this->Boards->find("list")->toArray());
+    $this->set("data", $this->Boards->find("list")->toArray());
+  }
+
+  /* 全レコード表示画面 */
+  public function paging() {
+    $data = $this->paginate($this->Boards);
+    $this->set("data", $data->toArray());
   }
 
   /* レコード登録画面 */
@@ -119,7 +130,6 @@ class BoardsController extends AppController {
       }
 
     }
-
     $this->set("entity", $this->Boards->get($id == 0 ? 1 : $id));
     $this->set("data", $this->Boards->find("all")->toArray());
 
