@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 class MembersTable extends Table {
 
   public function initialize(array $config) {
-    $this->hasOne('Boards');
+    $this->hasMany('Boards');
   }
 
   public function validationDefault(Validator $validator) {
