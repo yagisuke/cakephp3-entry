@@ -5,7 +5,6 @@
 <?= $this->Form->create($entity, ["url"=>["action"=>"update"]]) ?>
   <fieldset>
     <p>更新対象ID: <?= $entity->id ?></p>
-    name   : <?= $this->Form->text("name") ?>
     title  : <?= $this->Form->text("title") ?>
     content: <?= $this->Form->textarea("content") ?>
   </fieldset>
@@ -22,7 +21,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>NAME</th>
       <th>TITLE</th>
       <th>CONTENT</th>
     </tr>
@@ -36,7 +34,6 @@
                 $data[$i]['id'],
                 "/boards/update/" . $data[$i]['id']
               ),
-              $data[$i]['name'],
               $data[$i]['title'],
               $data[$i]['content']),
             ['style'=>'background-color: #f0f0f0'],

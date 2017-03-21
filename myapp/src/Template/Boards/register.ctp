@@ -19,7 +19,7 @@
   </thead>
   <tbody>
     <?php
-      $arr = $data->toArray();
+      $arr = $data;
       for ($i = 0; $i < count($arr); $i++) {
           echo $this->Html->tableCells(
             array(
@@ -27,7 +27,7 @@
                 $arr[$i]['id'],
                 "/boards/update/" . $arr[$i]['id']
               ),
-              $arr[$i]['name'],
+              $arr[$i]['member']['name'],
               $arr[$i]['title'],
               $arr[$i]['content']),
             ['style'=>'background-color: #f0f0f0'],

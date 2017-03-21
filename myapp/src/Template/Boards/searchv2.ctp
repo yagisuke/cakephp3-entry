@@ -14,7 +14,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>NAME</th>
       <th>TITLE</th>
     </tr>
   </thead>
@@ -28,7 +27,6 @@
                 $data[$i]['id'],
                 "/boards/update/" . $data[$i]['id']
               ),
-              $data[$i]['name'],
               $data[$i]['title']),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],

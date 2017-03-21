@@ -15,7 +15,8 @@ class BoardsController extends AppController {
 
   /* 全レコード表示画面 */
   public function index() {
-    $this->set("data", $this->Boards->find("list")->toArray());
+    $data = $this->Boards->find("list");
+    $this->set("data", $data->toArray());
   }
 
   /* 全レコード表示画面 */
@@ -32,7 +33,8 @@ class BoardsController extends AppController {
       $this->Boards->save($board);
     }
 
-    $this->set("data", $this->Boards->find("all"));
+    $data = $this->Boards->find("all")->contain(["Members"]);
+    $this->set("data", $data->toArray());
     $this->set("entity", $this->Boards->newEntity());
   }
 
@@ -65,15 +67,15 @@ class BoardsController extends AppController {
       if (!empty($this->request->query["id"])) {
         $conditions[] = ["id" => $this->request->query["id"]];
       }
-      if (!empty($this->request->query["name"])) {
-        $conditions[] = ["name like" => "%{$this->request->query["name"]}%"];
+      if (!empty($this->request->query["title"])) {
+        $conditions[] = ["title like" => "%{$this->request->query["title"]}%"];
       }
     }
 
     $data = $this->Boards->find()
       ->where($conditions)
-      ->select(["id", "name", "title"])
-      ->order(["name"=>"ASC", "id"=>"DESC"]);
+      ->select(["id", "title"])
+      ->order(["title"=>"ASC", "id"=>"DESC"]);
 
     $this->set("data", $data->toArray());
     $this->set("min", $data->min("id"));

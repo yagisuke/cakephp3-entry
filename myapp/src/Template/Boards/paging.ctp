@@ -9,7 +9,7 @@
   <thead>
     <tr>
       <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-      <th><?= $this->Paginator->sort('name', 'NAME') ?></th>
+      <th><?= $this->Paginator->sort('title', 'TITLE') ?></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +21,7 @@
               $item['id'],
               "/boards/update/" . $item['id']
             ),
-            $item['name']),
+            $item['title']),
           ['style'=>'background-color: #f0f0f0'],
           ['style'=>'font-weight: bold'],
           true);

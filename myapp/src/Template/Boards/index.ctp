@@ -9,19 +9,19 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>NAME</th>
+      <th>TITLE</th>
     </tr>
   </thead>
   <tbody>
     <?php
-      foreach ($data as $key => $name) {
+      foreach ($data as $key => $title) {
         echo $this->Html->tableCells(
           array(
             $this->Html->link(
               $key,
               "/boards/update/" . $key
             ),
-            $name),
+            $title),
           ['style'=>'background-color: #f0f0f0'],
           ['style'=>'font-weight: bold'],
           true);

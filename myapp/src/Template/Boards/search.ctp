@@ -5,7 +5,7 @@
 <?= $this->Form->create("", ["type"=>"get", "url"=>["action"=>"search"]]) ?>
   <fieldset>
     id   : <?= $this->Form->text("id") ?>
-    name : <?= $this->Form->text("name") ?>
+    title : <?= $this->Form->text("title") ?>
   </fieldset>
   <?= $this->Form->button("送信") ?>
 <?= $this->Form->end(); ?>
@@ -21,7 +21,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>NAME</th>
       <th>TITLE</th>
     </tr>
   </thead>
@@ -35,7 +34,6 @@
                 $data[$i]['id'],
                 "/boards/update/" . $data[$i]['id']
               ),
-              $data[$i]['name'],
               $data[$i]['title']),
             ['style'=>'background-color: #f0f0f0'],
             ['style'=>'font-weight: bold'],
