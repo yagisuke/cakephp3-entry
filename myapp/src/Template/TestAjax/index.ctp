@@ -30,7 +30,7 @@
         result.textContent = 'サーバーエラーが発生しました';
       }, false);
 
-      xhr.open('POST', 'testAjax/testApi', true);
+      xhr.open('POST', 'testApi/', true);
       xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
       xhr.send('name=' + encodeURIComponent(document.getElementById('name').value));
     }, false);
