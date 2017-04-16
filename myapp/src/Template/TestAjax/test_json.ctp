@@ -18,17 +18,19 @@
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               var data = JSON.parse(xhr.responseText);
+
               if (data === null) {
                 result.textContent = 'ブックマークは存在しません';
               } else {
                 var bms = data.bookmarks;
                 var ul = document.createElement('ul');
+
                 for (var i = 0, len = bms.length; i < len; i++) {
                   var li = document.createElement('li');
                   var anchor = document.createElement('a');
                   anchor.href = 'http://b.hatena.ne.jp/' + bms[i].user;
-                  var text = document.createTextNode(
-                    bms[i].title + ' @author: ' + bms[i].user);
+                  var text = document.createTextNode(bms[i].title + ' @author: ' + bms[i].user);
+
                   anchor.appendChild(text);
                   li.appendChild(anchor);
                   ul.appendChild(li);
